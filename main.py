@@ -19,7 +19,7 @@ for cog in cogs:
     client.load_extension(cog)
     print(cog)
 
-@commands.command()
+@client.command()
 async def sa(ctx):
     await ctx.send("as")
 
