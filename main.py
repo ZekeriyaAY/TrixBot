@@ -7,7 +7,7 @@ description = """
 TrixBot Yardım İsteği
 """
 intents = discord.Intents.all()
-client = commands.Bot(command_prefix='/', description=description, intents=intents)
+client = commands.Bot(command_prefix='?', description=description, intents=intents)
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
