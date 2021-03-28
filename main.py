@@ -1,11 +1,13 @@
 from discord.ext import commands
+import discord
 import logging
 import os
 
 description = """
 TrixBot Yardım İsteği
 """
-client = commands.Bot(command_prefix='?', description=description)
+intents=discord.Intents.all()
+client = commands.Bot(command_prefix='/', description=description, intents=intents)
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
@@ -33,6 +35,5 @@ async def on_message(message):
         return
 
     await client.process_commands(message)
-
 
 client.run(os.environ.get('TOKEN'))

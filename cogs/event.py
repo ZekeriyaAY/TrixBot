@@ -4,11 +4,31 @@ from datetime import datetime
 import discord
 import json
 
+
 class EventCog(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    @commands.Cog.listener()
+    async def on_member_update(self, before, after):
+        if isinstance(after.activity, discord.Streaming):
+            with open('./settings.json') as f:
+                data = json.load(f)
 
+            announceChannelID = data['announceChannel']
+            announceChannel = self.client.get_channel(announceChannelID)
+
+            stream_platform = after.activity.platform
+            stream_title = after.activity.name
+            stream_game = after.activity.game
+            stream_url = after.activity.url
+            streamer_name = after.activity.twitch_name
+
+            twitchLiveMessage = f"""** <:pepeshh:824718515092455455> `{streamer_name}` *{before.name}*  `{stream_game}` YAYINI AÇTI HEM DE `720p60fps`** <:pog:824718033138090044> 
+            <:twitch:824718148258889818> ** `{stream_title}` **
+            <:live:824718114947989624> *** {stream_url} *** <:live:824718114947989624>
+            """
+            await announceChannel.send(twitchLiveMessage)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
@@ -21,17 +41,18 @@ class EventCog(commands.Cog):
 
         logChannelID = data['logChannel']
         logChannel = self.client.get_channel(logChannelID)
-        embed = discord.Embed(description=f':white_check_mark: {member.mention} üyesine {role} verildi. ', color=discord.Color.green())
+        embed = discord.Embed(description=f':white_check_mark: {member.mention} üyesine {role} verildi. ',
+                              color=discord.Color.green())
         embed.set_footer(text=f'{datetime.now().strftime("%d/%m/%Y - %H:%M:%S")}')
         await logChannel.send(embed=embed)
 
         welcomeChannelID = data['welcomeChannel']
         welcomeChannel = self.client.get_channel(welcomeChannelID)
-        welcomeMessage = f"""
-                Aramıza 
-                HoşGeldin 
-                    {member.mention}
-                """
+        welcomeMessage = f""" 
+            Aramıza 
+            HoşGeldin 
+                {member.mention}
+        """
         await welcomeChannel.send(welcomeMessage)
 
     @commands.Cog.listener()
@@ -42,9 +63,9 @@ class EventCog(commands.Cog):
         welcomeChannelID = data['welcomeChannel']
         welcomeChannel = self.client.get_channel(welcomeChannelID)
         leaveMessage = f"""
-                        Kendine İyi Bak 
-                            {member.mention}
-                        """
+            Kendine İyi Bak 
+                {member.mention}
+        """
         await welcomeChannel.send(leaveMessage)
 
 
