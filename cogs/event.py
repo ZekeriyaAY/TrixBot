@@ -11,10 +11,9 @@ class EventCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
-        if isinstance(after.activity, discord.Streaming):
+        if isinstance(after.activity, discord.Streaming) and after.id == 149575209026846721:
             with open('./settings.json') as f:
                 data = json.load(f)
-
             announceChannelID = data['announceChannel']
             announceChannel = self.client.get_channel(announceChannelID)
 
@@ -24,10 +23,13 @@ class EventCog(commands.Cog):
             stream_url = after.activity.url
             streamer_name = after.activity.twitch_name
 
-            twitchLiveMessage = f"""** <:pepeshh:824718515092455455> `{streamer_name}` *{before.name}*  `{stream_game}` YAYINI AÇTI HEM DE `720p60fps`** <:pog:824718033138090044> 
+            twitchLiveMessage = f"""
+                ** <:pepeshh:824718515092455455> `{streamer_name}` *{before.name}*  `{stream_game}` YAYINI AÇTI HEM DE `720p60fps`** <:pog:824718033138090044> 
             <:twitch:824718148258889818> ** `{stream_title}` **
             <:live:824718114947989624> *** {stream_url} *** <:live:824718114947989624>
             """
+            await self.client.change_presence(
+                activity=discord.Streaming(name=streamer_name, url=stream_url, details=stream_title))
             await announceChannel.send(twitchLiveMessage)
 
     @commands.Cog.listener()
