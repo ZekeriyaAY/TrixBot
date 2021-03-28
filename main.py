@@ -16,7 +16,7 @@ formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
-cogs = ['cogs.owner', 'cogs.exception', 'cogs.event']
+cogs = ['cogs.owner', 'cogs.exception', 'cogs.event', 'cogs.moderation]
 for cog in cogs:
     client.load_extension(cog)
     print(cog)
