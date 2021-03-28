@@ -9,6 +9,7 @@ class EventCog(commands.Cog):
         self.client = client
 
 
+
     @commands.Cog.listener()
     async def on_member_join(self, member):
         with open('./settings.json') as f:
@@ -26,7 +27,6 @@ class EventCog(commands.Cog):
 
         welcomeChannelID = data['welcomeChannel']
         welcomeChannel = self.client.get_channel(welcomeChannelID)
-
         welcomeMessage = f"""
                 Aramıza 
                 HoşGeldin 
@@ -41,7 +41,6 @@ class EventCog(commands.Cog):
 
         welcomeChannelID = data['welcomeChannel']
         welcomeChannel = self.client.get_channel(welcomeChannelID)
-
         leaveMessage = f"""
                         Kendine İyi Bak 
                             {member.mention}
