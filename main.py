@@ -9,7 +9,7 @@ TrixBot Yardım İsteği
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix='?', description=description, intents=intents)
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 cogs = ['cogs.owner', 'cogs.exception', 'cogs.event', 'cogs.moderation']
 for cog in cogs:
