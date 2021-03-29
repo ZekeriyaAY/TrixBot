@@ -2,11 +2,16 @@ from discord.ext import commands
 import discord
 
 
-class ModerationCog(commands.Cog):
+class Moderator(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
+    @commands.command(brief='Mesaj yazdırır')
+    @commands.has_permissions(mention_everyone=True)
+    async def yaz(self, ctx, *, msg):
+        await ctx.send(msg)
+
+    @commands.command(brief='Sunucudan atar')
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member: discord.Member, *, reason=None):
         await member.kick(reason=reason)
@@ -19,4 +24,4 @@ class ModerationCog(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(ModerationCog(client))
+    client.add_cog(Moderator(client))

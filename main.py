@@ -4,22 +4,19 @@ import logging
 import os
 
 description = """
-TrixBot Yardım İsteği
+TrixBot Yardım Merkez | Sorun varsa--> @z3k#9977
 """
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix='?', description=description, intents=intents)
 
 logging.basicConfig(level=logging.INFO)
 
-cogs = ['cogs.owner', 'cogs.exception', 'cogs.event', 'cogs.moderation']
+cogs = ['cogs.owner', 'cogs.exception', 'cogs.event', 'cogs.moderation', 'cogs.command', 'cogs.herkesebenden']
 for cog in cogs:
     client.load_extension(cog)
     print(cog)
 
 
-@client.command()
-async def sa(ctx):
-    await ctx.send("as")
 
 @client.event
 async def on_ready():
