@@ -26,7 +26,7 @@ class EventCog(commands.Cog):
             twitchLiveMessage = f"""
                 ** <:pepeshh:824718515092455455> `{streamer_name}` *{before.name}*  `{stream_game}` YAYINI AÇTI HEM DE `720p60fps`** <:pog:824718033138090044> 
             <:twitch:824718148258889818> ** `{stream_title}` **
-            <:live:824718114947989624> *** {stream_url} *** <:live:824718114947989624>
+            <:live:824718114947989624> *** {stream_url} *** <:live:824718114947989624> @everyone
             """
             await self.client.change_presence(
                 activity=discord.Streaming(name=streamer_name, url=stream_url, details=stream_title))
