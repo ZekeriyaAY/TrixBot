@@ -9,7 +9,8 @@ class Moderator(commands.Cog):
     @commands.command(brief='Mesaj yazdırır')
     # @commands.has_permissions(mention_everyone=True)
     async def yaz(self, ctx, *, msg):
-        if '@everyone','@here' in msg:
+        yasak = ["@everyone", "@here"]
+        if yasak in msg:
             await ctx.send("Everyone kullanamazsın!")
         await ctx.send(msg)
 
