@@ -29,7 +29,7 @@ async def on_ready():
             data = json.load(f)
     chatChannelID = data['chatChannel']
     chatChannel = client.get_channel(chatChannelID)
-    await chatChannel.send(f'Ohh! Kodlarım çok güzel çalışıyor <3 <@149575209026846721> :magnet: *Ping: **{round(self.client.latency * 1000)}ms***')
+    await chatChannel.send(f'Ohh! Kodlarım çok güzel çalışıyor <3 <@149575209026846721> :magnet: *Ping: **{round(client.latency * 1000)}ms***')
 
 
 @client.event
