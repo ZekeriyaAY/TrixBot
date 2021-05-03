@@ -22,13 +22,13 @@ for cog in cogs:
 async def on_ready():
     print(f'{client.user} çalışıyor...')
     await client.change_presence(
-        activity=discord.Streaming(platform="Twitch", name="ERYSTRIX", url="https:www.twitch.tv/erystrix"))
+        activity=discord.Streaming(platform="Twitch.TV", name="twitch.tv/ERYSTRIX", url="https:www.twitch.tv/erystrix"))
 
     with open('./settings.json') as f:
             data = json.load(f)
     chatChannelID = data['chatChannel']
-    chatChannel = self.client.get_channel(chatChannelID)
-    await chatChannel.sen("Ohh! Kodlarım çok güzel çalışıyor <3 <@149575209026846721>")
+    chatChannel = client.get_channel(chatChannelID)
+    await chatChannel.send("Ohh! Kodlarım çok güzel çalışıyor <3 <@149575209026846721>")
 
 
 @client.event
