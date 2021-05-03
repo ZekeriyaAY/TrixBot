@@ -22,7 +22,8 @@ for cog in cogs:
 async def on_ready():
     print(f'{client.user} çalışıyor...')
     await client.change_presence(
-        activity=discord.Streaming(platform="Twitch.TV", name="twitch.tv/ERYSTRIX", url="https:www.twitch.tv/erystrix"))
+        activity=discord.Streaming(name="twitch.tv/ERYSTRIX", url="https://www.twitch.tv/erystrix"))
+
 
     with open('./settings.json') as f:
             data = json.load(f)
