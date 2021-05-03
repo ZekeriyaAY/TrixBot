@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import logging
 import os
+import json
 
 description = """
 TrixBot Yardım Merkez | Sorun varsa--> @z3k#9977
@@ -21,7 +22,7 @@ for cog in cogs:
 async def on_ready():
     print(f'{client.user} çalışıyor...')
     await client.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.watching, name="discord.io/ERYSTRIX"))
+        activity=discord.Activity(type=discord.Streaming(platform="Twitch", name="ERYSTRIX", url="https:www.twitch.tv/erystrix")))
 
     with open('./settings.json') as f:
             data = json.load(f)
