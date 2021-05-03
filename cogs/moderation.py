@@ -7,8 +7,10 @@ class Moderator(commands.Cog):
         self.client = client
 
     @commands.command(brief='Mesaj yazdırır')
-    @commands.has_permissions(mention_everyone=True)
+    # @commands.has_permissions(mention_everyone=True)
     async def yaz(self, ctx, *, msg):
+        if '@everyone','@here' in msg:
+            await ctx.send("Everyone kullanamazsın!")
         await ctx.send(msg)
 
     @commands.command(brief='Sunucudan atar')
