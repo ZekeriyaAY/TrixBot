@@ -23,6 +23,10 @@ async def on_ready():
     await client.change_presence(
         activity=discord.Activity(type=discord.ActivityType.watching, name="discord.io/ERYSTRIX"))
 
+    chatChannelID = data['chatChannel']
+    chatChannel = self.client.get_channel(chatChannelID)
+    await chatChannel.sen("Ohh! Kodlarım çok güzel çalışıyor <3 <@149575209026846721>")
+
 
 @client.event
 async def on_message(message):
