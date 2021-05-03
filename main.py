@@ -37,8 +37,8 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    async def sa(ctx):
-        await ctx.send(f'Aleyküm borax {ctx.message.author.mention}')
+    if message.content.startswith('sa'):
+        await message.channel.send(f'Aleyküm borax {ctx.message.author.mention}')
 
     await client.process_commands(message)
 
