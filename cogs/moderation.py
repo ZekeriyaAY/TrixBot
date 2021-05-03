@@ -15,6 +15,7 @@ class Moderator(commands.Cog):
             msg = msg.replace("@everyone","")
             msg = msg.replace("@here","")
             await ctx.send(msg)
+        await ctx.message.delete()
 
     @commands.command(brief='Sunucudan atar')
     @commands.has_permissions(kick_members=True)
