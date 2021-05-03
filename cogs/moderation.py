@@ -9,11 +9,11 @@ class Moderator(commands.Cog):
     @commands.command(brief='Mesaj yazdırır')
     # @commands.has_permissions(mention_everyone=True)
     async def yaz(self, ctx, *, msg):
-        yasak = ["@everyone", "@here"]
         if ctx.message.author.guild_permissions.mention_everyone:
             await ctx.send(msg)
         else:
-            msg = msg.replace(yasak,"")
+            msg = msg.replace("@everyone","")
+            msg = msg.replace("@here","")
             await ctx.send(msg)
 
     @commands.command(brief='Sunucudan atar')
