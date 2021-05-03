@@ -17,17 +17,20 @@ for cog in cogs:
     print(cog)
 
 
-
 @client.event
 async def on_ready():
     print(f'{client.user} çalışıyor...')
     await client.change_presence(
         activity=discord.Activity(type=discord.ActivityType.watching, name="discord.io/ERYSTRIX"))
 
+
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
+    
+    async def sa(ctx):
+        await ctx.send(f'Aleyküm borax {ctx.message.author.mention}')
 
     await client.process_commands(message)
 

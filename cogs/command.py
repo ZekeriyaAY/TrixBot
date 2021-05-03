@@ -7,30 +7,30 @@ class Genel(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(brief='Selam çak')
-    async def sa(self, ctx):
-        await ctx.send(f'Aleyküm borax {ctx.message.author.mention}')
 
     @commands.command(brief='Davet linkleri',
                       aliases=['davet', 'davetet'])
     async def invite(self, ctx):
-        await ctx.send(f'Davet linkleriyle insanları çağırarak büyümemize yardımcı olur musun {ctx.message.author.mention}?'
-                       '\nhttps://discord.gg/DDxf9SjWPA'
-                       '\n<https://discord.io/erystrix>')
+        await ctx.send(
+            f'Davet linkleriyle insanları çağırarak büyümemize yardımcı olur musun {ctx.message.author.mention}?'
+            '\nhttps://discord.gg/DDxf9SjWPA'
+            '\n<https://discord.io/erystrix>')
 
     @commands.command(brief='Bot ile Discord arası gecikme süresi')
     async def ping(self, ctx):
         async with ctx.typing():
             pass
-        embed = discord.Embed(description=f':magnet: *Ping: **{round(self.client.latency * 1000)}ms***', color=discord.Color.red())
+        embed = discord.Embed(description=f':magnet: *Ping: **{round(self.client.latency * 1000)}ms***',
+                              color=discord.Color.red())
         await ctx.send(embed=embed)
 
     @commands.command(brief='Sunucuya ne zaman girdin?')
     async def girdi(self, ctx, member: discord.Member):
         async with ctx.typing():
             pass
-        embed = discord.Embed(description=f'<:pog:824718033138090044> {member.mention}, ***{member.joined_at}*** sunucuya girdi.',
-                              color=discord.Color.blue())
+        embed = discord.Embed(
+            description=f'<:pog:824718033138090044> {member.mention}, ***{member.joined_at}*** sunucuya girdi.',
+            color=discord.Color.blue())
         await ctx.send(embed=embed)
 
     @commands.command(brief='Sunucu hakkında bilgi al',
@@ -61,6 +61,7 @@ class Genel(commands.Cog):
         async with ctx.typing():
             pass
         await ctx.send(embed=embed)
+
 
 def setup(client):
     client.add_cog(Genel(client))

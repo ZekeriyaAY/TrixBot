@@ -48,27 +48,25 @@ class EventCog(commands.Cog):
         embed.set_footer(text=f'{datetime.now().strftime("%d/%m/%Y - %H:%M:%S")}')
         await logChannel.send(embed=embed)
 
-        welcomeChannelID = data['welcomeChannel']
-        welcomeChannel = self.client.get_channel(welcomeChannelID)
         welcomeMessage = f""" 
             Aramıza 
             HoşGeldin 
                 {member.mention}
         """
-        await welcomeChannel.send(welcomeMessage)
+        await logChannel.send(welcomeMessage)
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         with open('./settings.json') as f:
             data = json.load(f)
 
-        welcomeChannelID = data['welcomeChannel']
-        welcomeChannel = self.client.get_channel(welcomeChannelID)
+        logChannelID = data['logChannel']
+        logChannel = self.client.get_channel(logChannelID)
         leaveMessage = f"""
             Kendine İyi Bak 
                 {member.mention}
         """
-        await welcomeChannel.send(leaveMessage)
+        await logChannel.send(leaveMessage)
 
 
 def setup(client):

@@ -31,5 +31,6 @@ class HerkeseBenden(commands.Cog):
         embed.set_image(url='https://i.ytimg.com/vi/-9BSbY8fUWY/maxresdefault.jpg')
         await ctx.send(embed=embed)
 
+
 def setup(client):
     client.add_cog(HerkeseBenden(client))
